@@ -201,11 +201,11 @@ def myFunction(event=None):
 
     root.title("Dogru = %d/"""+str(Number)+"""                                Yanlis = %d/"""+str(Number)+"""                                Bos = %d/"""+str(Number)+"""                                NET = %.2f                                %c %.2f"%(int(Dogru),int(Yanlis),int(Bos),net,'%',yuz))
 
-    if yuz < 49:
+    if yuz < 50:
         fullscore['bg']="red"
-    if yuz > 49:
+    elif yuz >= 50 and yuz<75:
         fullscore['bg']="orange"
-    if yuz > 74:
+    else:
         fullscore['bg']="light green"
 
 
