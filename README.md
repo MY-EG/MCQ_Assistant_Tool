@@ -22,6 +22,7 @@ The MCQ Assistant Tool is a Python script that assists in managing multiple-choi
 2. **Generate Scripts**:
    - Run the `MCQ_Assistant_Tool.py` script.
    - Enter the number of questions when prompted and click the start button or press enter.
+   - You can enter at least 5.
 
 ![image](https://github.com/MY-EG/MCQ_Assistant_Tool/assets/158834031/95fa36bf-d4e1-4746-a28f-001274dcb399)
 
