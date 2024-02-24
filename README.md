@@ -1,7 +1,11 @@
-![image](https://github.com/MY-EG/MCQ_Assistant_Tool/assets/158834031/a56b2868-e34c-4276-b7f0-486ea92c8996)
+
 ---
 
 # MCQ Assistant Tool
+![image](https://github.com/MY-EG/MCQ_Assistant_Tool/assets/158834031/d158b764-1de7-4cc2-bfe1-6b5170e7bbdf)
+
+
+
 
 ## Overview
 The MCQ Assistant Tool is a Python script that assists in managing multiple-choice questions (MCQs) by generating scripts for setting answers and correcting them through a graphical user interface (GUI).
@@ -18,12 +22,14 @@ The MCQ Assistant Tool is a Python script that assists in managing multiple-choi
 2. **Generate Scripts**:
    - Run the `MCQ_Assistant_Tool.py` script.
    - Enter the number of questions when prompted and click the start button or press enter.
+
 ![image](https://github.com/MY-EG/MCQ_Assistant_Tool/assets/158834031/95fa36bf-d4e1-4746-a28f-001274dcb399)
+
    - Two Python scripts will be generated:
      - `Set Answers (Number).py`: Use this script to input the correct answers.
      - `Correction Machine (Number)GUI.py`: Use this script to correct the answers through a graphical interface.
 
-3. **Set Answers**:
+4. **Set Answers**:
    - Execute the `Set Answers (Number).py` script using Python.
    - Enter the correct answers for each question when prompted.
    - Once all answers are entered, the script will close automatically.
@@ -46,7 +52,11 @@ The MCQ Assistant Tool is a Python script that assists in managing multiple-choi
    - 0-50 red
    - 50-75 orange
    - 75-100 green
-![image](https://github.com/MY-EG/MCQ_Assistant_Tool/assets/158834031/41390b76-bb44-4ca7-aad7-e27051dd8274)
+
+
+![image](https://github.com/MY-EG/MCQ_Assistant_Tool/assets/158834031/ba261c65-ec60-4feb-ab83-6cfdfc8c10ea)
+
+
 
 ## Requirements
 - Python 3.x
