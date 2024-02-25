@@ -14,14 +14,22 @@ The MCQ Assistant Tool is a Python script that assists in managing multiple-choi
 - **Set Answers Script**: Generates a script (`Set Answers (Number).py`) for setting correct answers to MCQs.
 - **Correction GUI Script**: Generates a script (`Correction Machine (Number)GUI.py`) for correcting MCQ answers through a graphical interface.
 
+
+## Requirements
+- Python 3.x
+```sh
+pip install pyautogui
+```
+
 ## Usage
 1. **Setup**:
    - Ensure you have Python installed on your system.
    - Clone or download the repository to your local machine.
 
+
 2. **Generate Scripts**:
    - Run the `MCQ_Assistant_Tool.py` script.
-   - Enter the number of questions when prompted and click the start button or press enter.
+   - Enter the number of questions when prompted and click "Start" or press Enter.
    - You can enter at least 5.
 
 ![image](https://github.com/MY-EG/MCQ_Assistant_Tool/assets/158834031/95fa36bf-d4e1-4746-a28f-001274dcb399)
@@ -48,6 +56,7 @@ The MCQ Assistant Tool is a Python script that assists in managing multiple-choi
    - Use the graphical interface to input the answers.
    - The correctness of each answer will be displayed alongside the question.
    - You can also use here uppercase letters, lowercase letters and numbers
+   - The correctness of each answer will be displayed (correct: ✔️, incorrect: ❌) alongside the question.
    - The overall score will be displayed at the top.
    - The score table background color changing with the score high.
    - 0-50 red
@@ -58,10 +67,6 @@ The MCQ Assistant Tool is a Python script that assists in managing multiple-choi
 ![image](https://github.com/MY-EG/MCQ_Assistant_Tool/assets/158834031/ba261c65-ec60-4feb-ab83-6cfdfc8c10ea)
 
 
-
-## Requirements
-- Python 3.x
-- Internet access (for library installation if necessary)
 
 ## Disclaimer
 This script is provided as-is and may require adjustments to fit specific use cases. Please review and understand the code before executing it, especially if using it in a production environment.
