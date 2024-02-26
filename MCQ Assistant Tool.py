@@ -262,8 +262,8 @@ if __name__ == '__main__':
     root.geometry("200x100")
     root.resizable(False, False)    # Making the window non-resizable
 
-    text=Label(text="Enter Num",font=("Roboto",20)) # Creating a label widget
-    text.place(x=35,y=0)    # Placing the label at (35,0)
+    text=Label(text="Enter Number",font=("Roboto",20)) # Creating a label widget
+    text.place(x=15 ,y=0)    # Placing the label at (35,0)
 
     num = Entry(width=8, font=('Arial 24'))  # Creating an entry widget for user input
     num.insert(0, "0")  # Inserting a default value in the entry widget
