@@ -43,7 +43,6 @@ second_frame.place(x=0,y=0)
 third_frame = Frame(width=500,height=500)
 third_frame.place(x=500,y=50)
 
-
 my_canvas.create_window((0,0), window=second_frame, anchor="nw")
 
 A="Aa1"
@@ -54,7 +53,6 @@ E="Ee5"
 
 def myFunction(event=None):
     set_ans()
-
 
 def key_handler(event=None):
     if (event.keysym in "abbcde12345ABCDE"):
@@ -97,7 +95,6 @@ for i in range(1,order+1):
     Label(second_frame,text=i,font=("Roboto",25)).place(x=20,y=20+(i-1)*50)
     variables.append(Entry(second_frame,width=2,font=('Arial 24')))
     variables[i-1].place(x=100,y=20+(i-1)*50)
-
 
 second_frame.configure(height=6144.0)
 root.mainloop()
