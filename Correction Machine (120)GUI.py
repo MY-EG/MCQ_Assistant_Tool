@@ -52,16 +52,16 @@ def myFunction(event=None):
     Bos = 0
 
     for i in range(1,order+1):
-        if questions.get() == "" or questions.get()[0] not in (cevablar):
-            sign[i]['text']=""
+        if questions[i-1].get() == "" or questions[i-1].get()[0] not in (cevablar):
+            sign[i-1]['text']=""
             Bos+=1
-        elif questions.get().get()[0] in answers[0]:
-                sign[i]['text']="✔️"
-                sign[i]['fg']="green"
+        elif questions[i-1].get()[0] in answers[0]:
+                sign[i-1]['text']="✔️"
+                sign[i-1]['fg']="green"
                 Dogru+=1
         else:
-            sign[i]['text']="X"
-            sign[i]['fg']="red"
+            sign[i-1]['text']="X"
+            sign[i-1]['fg']="red"
             Yanlis+=1
 
     net = (Dogru-Yanlis/4)
@@ -83,10 +83,10 @@ def myFunction(event=None):
     print(fullscore['text'])
 
 def key_handler(event=None):
-    if event and event.keysym in (cevablar):
-        pyautogui.press("tab")
-    if event.keysym=="BackSpace":
-        pyautogui.hotkey('shift', 'tab')
+    if (event.keysym in "abbcde12345ABCDE"):
+        event.widget.tk_focusNext().focus()
+    if (event.keysym == "BackSpace"):
+        event.widget.tk_focusPrev().focus()
     myFunction()
 
 root.bind('<Return>',myFunction)
