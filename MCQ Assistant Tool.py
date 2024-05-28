@@ -23,7 +23,7 @@ def myFunction(event=None):
     ##---------------------------------##
     
     # Adding the initial part of the code for file1
-    first_line1=("""from os import system
+    SetAnswersCode=("""from os import system
 from tkinter import *
 from tkinter import ttk
 try:import pyautogui
@@ -32,7 +32,10 @@ except:
     system("cls")
     import pyautogui
 
-system("del answers_"""+str(Number)+""".txt") ##If it is exist
+order = """+str(Number)+"""
+                 
+
+system("del answers_"+str(order)+".txt") ##If it is exist
 
 root = Tk()
 
@@ -69,11 +72,11 @@ third_frame.place(x=500,y=50)
 
 my_canvas.create_window((0,0), window=second_frame, anchor="nw")
 
-A="A","a","1"
-B="B","b","2"
-C="C","c","3"
-D="D","d","4"
-E="E","e","5"
+A="Aa1"
+B="Bb2"
+C="Cc3"
+D="Dd4"
+E="Ee5"
 
 def myFunction(event=None):
     set_ans()
@@ -81,46 +84,60 @@ def myFunction(event=None):
 
 
 def key_handler(event=None):
-    if event and event.keysym in (A+B+C+D+E):
-        pyautogui.press("tab")
-    if event.keysym=="BackSpace":
-        pyautogui.hotkey('shift', 'tab')
+    if (event.keysym in "abbcde12345ABCDE"):
+        event.widget.tk_focusNext().focus()
+    if (event.keysym == "BackSpace"):
+        event.widget.tk_focusPrev().focus()
 
 
 root.bind('<Return>',myFunction)
 root.bind('<Key>', key_handler)
 
 
-def set_ans():""")
+def set_ans():
+    for num in range(1,order+1):
+        if variables[num-1].get() == "":
+            line=""
+        elif variables[num-1].get() in A:
+            line = A
+        elif variables[num-1].get() in B:
+            line = B
+        elif variables[num-1].get() in C:
+            line = C
+        elif variables[num-1].get() in D:
+            line = D
+        elif variables[num-1].get() in E:
+            line = E
 
-    f = open(file1, "w", encoding="utf-8")  # Opening file1 for writing
-    f.write(first_line1)    # Writing the initial part of the code to file1
-    f.close()   # Closing file1
+        with open("answers_"+str(order)+".txt", "a") as f:f.write(line+" . \\n")
     
-    # Writing to file1: setting answers
-    for A in range(1,int(Number)+1):
-        with open(file1, "a",encoding='utf-8') as f:f.write("""\n    with open("answers_"""+Number+""".txt", "a") as f:f.write(s"""+str(A)+""".get().replace("a","aA1").replace("A","aA1").replace("1","aA1").replace("b","bB2").replace("B","bB2").replace("2","bB2").replace("c","cC3").replace("C","cC3").replace("3","cC3").replace("d","dD4").replace("D","dD4").replace("4","dD4").replace("e","eE5").replace("E","eE5").replace("5","eE5")+" . \\n")""")
-    with open(file1, "a",encoding='utf-8') as f:
-        # Adding the rest of the code to file1
-        f.write("""\n
     root.destroy()
     system("cls")
-    system('"correction machine ("""+str(A)+""")GUI.py"')""")
-    with open(file1, "a",encoding='utf-8') as f:f.write("""\nset = Button(third_frame,text='set the ansewrs', font=("Roboto", 30),bg='green',fg="red",command=set_ans)
+    system('"correction machine ('+str(order)+')GUI.py"')
+
+set = Button(third_frame,text='set the ansewrs', font=("Roboto", 30),bg='green',fg="red",command=set_ans)
 set.place(x=0,y=0)
-""")
-    for A in range(1,int(Number)+1):
-        with open(file1, "a",encoding='utf-8') as f:f.write("""\nLabel(second_frame,text="""+str(A)+""",font=("Roboto",25)).place(x=20,y="""+str(A*50-30)+""")
-s"""+str(A)+"""=Entry(second_frame,width=2,font=('Arial 24'))
-s"""+str(A)+""".place(x=100,y="""+str(A*50-30)+""")""")
-    with open(file1, "a",encoding='utf-8') as f:f.write("""\nsecond_frame.configure(height="""+str(51.2*int(Number))+""")
+
+variables = []
+
+for i in range(1,order+1):
+    Label(second_frame,text=i,font=("Roboto",25)).place(x=20,y=20+(i-1)*50)
+    variables.append(Entry(second_frame,width=2,font=('Arial 24')))
+    variables[i-1].place(x=100,y=20+(i-1)*50)
+
+second_frame.configure(height=6144.0)
 root.mainloop()""")
+
+    f = open(file1, "w", encoding="utf-8")  # Opening file1 for writing
+    f.write(SetAnswersCode)    # Writing the initial part of the code to file1
+    f.close()   # Closing file1
+    
     
     
     ##---------------------------------##
     
     # Adding the initial part of the code for file2
-    first_line2="""from os import system
+    CorrectionMachineCode="""from os import system
 from tkinter import *
 from tkinter import ttk
 try:import pyautogui
@@ -128,6 +145,9 @@ except:
     system("pip install pyautogui")
     system("cls")
     import pyautogui
+
+order = """+str(Number)+"""
+
 
 root=Tk()
 
@@ -164,87 +184,80 @@ my_canvas.create_window((0,0), window=second_frame, anchor="nw")
 
 cevablar=("12345ABCDEabcde")
 
-answers = open('answers_"""+str(Number)+""".txt').readlines()
+answers = open('answers_'+str(order)+'.txt').readlines()
 
 def myFunction(event=None):
-    
     Dogru = 0
     Yanlis = 0
-    Bos = 0\n"""
-    
-    
-    f = open(file2, "w", encoding="utf-8")  # Opening file2 for writing
-    f.write(first_line2)  # Writing the initial part of the code to file2
-    f.close()  # Closing after writing the first lines file2
-    
-    for A in range(1,int(Number)+1):
-        with open(file2, "a",encoding='utf-8') as f:
-            # Writing to file2: checking answers
-            f.write("""    if s"""+str(A)+""".get() == "" or s"""+str(A)+""".get()[0] not in (cevablar):
-        tr"""+str(A)+"""['text']=""
-        Bos+=1
-    else:
-        if s"""+str(A)+""".get()[0] in answers["""+str(A-1)+"""]:
-            tr"""+str(A)+"""['text']="✔️"
-            tr"""+str(A)+"""['fg']="green"
-            Dogru+=1
+    Bos = 0
+
+    for i in range(1,order+1):
+        if questions[i-1].get() == "" or questions[i-1].get()[0] not in (cevablar) or answers[i-1][0]==" ":
+            sign[i-1]['text']=""
+            Bos+=1
+        elif questions[i-1].get()[0] in answers[i-1]:
+                sign[i-1]['text']="✔️"
+                sign[i-1]['fg']="green"
+                Dogru+=1
         else:
-            tr"""+str(A)+"""['text']="X"
-            tr"""+str(A)+"""['fg']="red"
-            Yanlis+=1\n""")
-    
-    with open(file2, "a") as f:
-        # Adding the rest of the code to file2
-        f.write("""    net = (Dogru-Yanlis/4)
-    yuz = (net*100/"""+str(Number)+""")
+            sign[i-1]['text']="X"
+            sign[i-1]['fg']="red"
+            Yanlis+=1
+
+    net = (Dogru-Yanlis/4)
+    yuz = (net*100/order)
     
 
-    root.title("Dogru = %d/"""+str(Number)+"""                                Yanlis = %d/"""+str(Number)+"""                                Bos = %d/"""+str(Number)+"""                                NET = %.2f                                %c %.2f"%(int(Dogru),int(Yanlis),int(Bos),net,'%',yuz))
+    root.title("Dogru = %d/%d                                Yanlis = %d/%d                                Bos = %d/%d                                NET = %.2f                                %c %.2f"%(int(Dogru),order,int(Yanlis),order,int(Bos),order,net,'%',yuz))
 
-    if yuz < 50:
+    if yuz < 49:
         fullscore['bg']="red"
-    elif yuz >= 50 and yuz<75:
+    if yuz > 49:
         fullscore['bg']="orange"
-    else:
+    if yuz > 74:
         fullscore['bg']="light green"
 
 
-    fullscore['text']=("Dogru = %d/"""+str(Number)+"""                                \\n                                NET = %.2f/"""+str(Number)+"""\\nYanlis = %d/"""+str(Number)+"""                                \\n                                %c %.2f\\nBos = %d/"""+str(Number)+"""                                "%(int(Dogru),net,int(Yanlis),'%',yuz,int(Bos)))
+    fullscore['text']=("Dogru = %d/%d                                \\n                                NET = %.2f/%d\\nYanlis = %d/%d                                \\n                                %c %.2f\\nBos = %d/%d                                "%(int(Dogru),order,net,order,int(Yanlis),order,'%',yuz,int(Bos),order))
     system("cls")
     print(fullscore['text'])
 
 def key_handler(event=None):
-    if event and event.keysym in (cevablar):
-        pyautogui.press("tab")
-    if event.keysym=="BackSpace":
-        pyautogui.hotkey('shift', 'tab')
+    if (event.keysym in "abbcde12345ABCDE"):
+        event.widget.tk_focusNext().focus()
+    if (event.keysym == "BackSpace"):
+        event.widget.tk_focusPrev().focus()
     myFunction()
 
 root.bind('<Return>',myFunction)
 root.bind('<Key>', key_handler)
 
 
-fullscore = Label(third_frame,text="Dogru = /"""+Number+"""                                \\n                                NET = /"""+Number+"""\\nYanlis = /"""+Number+"""                                \\n                                % \\nBos = /"""+Number+"""                                ",fg='white',bg="black",font=("Roboto",25))
+fullscore = Label(third_frame,text="Dogru = /"+str(order)+"                                \\n                                NET = /"+str(order)+"\\nYanlis = /"+str(order)+"                                \\n                                % \\nBos = /"+str(order)+"                                ",fg='white',bg="black",font=("Roboto",25))
 fullscore.place(x=0,y=0)
 
-""")
+sign = []
+questions = []
+for i in range(1,order+1):
+    sign.append(Label(second_frame,text="",fg='green',font=("Roboto",25)))
+    sign[i-1].place(x=150,y=20+(i-1)*50)
+    Label(second_frame,text=i,font=("Roboto",25)).place(x=20,y=20+(i-1)*50)
+    questions.append(Entry(second_frame,width=2,font=('Arial 24')))
+    questions[i-1].place(x=100,y=20+(i-1)*50)
+    second_frame.configure(height=53*i)
+
+
+second_frame.configure(height=6144.0)
+
+
+root.mainloop()
+
+"""
     
-    for A in range(1,int(Number)+1):
-        with open(file2, "a",encoding='utf-8') as f:f.write("""\ntr"""+str(A)+""" = Label(second_frame,text="",fg='green',font=("Roboto",25))
-tr"""+str(A)+""".place(x=150,y="""+str(A*50-30)+""")""")
-
-    with open(file2, "a",encoding='utf-8') as f:f.write("\n\n\n")
     
-    for A in range(1,int(Number)+1):
-        with open(file2, "a",encoding='utf-8') as f:f.write("""Label(second_frame,text="""+str(A)+""",font=("Roboto",25)).place(x=20,y="""+str(A*50-30)+""")
-s"""+str(A)+"""=Entry(second_frame,width=2,font=('Arial 24'))
-s"""+str(A)+""".place(x=100,y="""+str(A*50-30)+""")
-second_frame.configure(height="""+str(A*53)+""")\n""")
-
-    with open(file2, "a",encoding='utf-8') as f:f.write("""\nsecond_frame.configure(height="""+str(51.2*int(Number))+""")
-
-
-root.mainloop()""")
+    f = open(file2, "w", encoding="utf-8")  # Opening file2 for writing
+    f.write(CorrectionMachineCode)  # Writing the initial part of the code to file2
+    f.close()  # Closing after writing the first lines file2
     
     ##---------------------------------##
     
@@ -276,4 +289,3 @@ if __name__ == '__main__':
     root.bind('<Return>', myFunction)  # Binding Enter key press event to myFunction
 
     root.mainloop()  # Running the Tkinter event loop
-

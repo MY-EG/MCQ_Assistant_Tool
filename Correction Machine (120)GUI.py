@@ -44,7 +44,7 @@ my_canvas.create_window((0,0), window=second_frame, anchor="nw")
 
 cevablar=("12345ABCDEabcde")
 
-answers = open('answers_120.txt').readlines()
+answers = open('answers_'+str(order)+'.txt').readlines()
 
 def myFunction(event=None):
     Dogru = 0
@@ -52,10 +52,10 @@ def myFunction(event=None):
     Bos = 0
 
     for i in range(1,order+1):
-        if questions[i-1].get() == "" or questions[i-1].get()[0] not in (cevablar):
+        if questions[i-1].get() == "" or questions[i-1].get()[0] not in (cevablar) or answers[i-1][0]==" ":
             sign[i-1]['text']=""
             Bos+=1
-        elif questions[i-1].get()[0] in answers[0]:
+        elif questions[i-1].get()[0] in answers[i-1]:
                 sign[i-1]['text']="✔️"
                 sign[i-1]['fg']="green"
                 Dogru+=1
@@ -65,10 +65,10 @@ def myFunction(event=None):
             Yanlis+=1
 
     net = (Dogru-Yanlis/4)
-    yuz = (net*100/120)
+    yuz = (net*100/order)
     
 
-    root.title("Dogru = %d/120                                Yanlis = %d/120                                Bos = %d/120                                NET = %.2f                                %c %.2f"%(int(Dogru),int(Yanlis),int(Bos),net,'%',yuz))
+    root.title("Dogru = %d/%d                                Yanlis = %d/%d                                Bos = %d/%d                                NET = %.2f                                %c %.2f"%(int(Dogru),order,int(Yanlis),order,int(Bos),order,net,'%',yuz))
 
     if yuz < 49:
         fullscore['bg']="red"
@@ -78,7 +78,7 @@ def myFunction(event=None):
         fullscore['bg']="light green"
 
 
-    fullscore['text']=("Dogru = %d/120                                \n                                NET = %.2f/120\nYanlis = %d/120                                \n                                %c %.2f\nBos = %d/120                                "%(int(Dogru),net,int(Yanlis),'%',yuz,int(Bos)))
+    fullscore['text']=("Dogru = %d/%d                                \n                                NET = %.2f/%d\nYanlis = %d/%d                                \n                                %c %.2f\nBos = %d/%d                                "%(int(Dogru),order,net,order,int(Yanlis),order,'%',yuz,int(Bos),order))
     system("cls")
     print(fullscore['text'])
 
@@ -93,7 +93,7 @@ root.bind('<Return>',myFunction)
 root.bind('<Key>', key_handler)
 
 
-fullscore = Label(third_frame,text="Dogru = /120                                \n                                NET = /120\nYanlis = /120                                \n                                % \nBos = /120                                ",fg='white',bg="black",font=("Roboto",25))
+fullscore = Label(third_frame,text="Dogru = /"+str(order)+"                                \n                                NET = /"+str(order)+"\nYanlis = /"+str(order)+"                                \n                                % \nBos = /"+str(order)+"                                ",fg='white',bg="black",font=("Roboto",25))
 fullscore.place(x=0,y=0)
 
 sign = []
@@ -105,8 +105,6 @@ for i in range(1,order+1):
     questions.append(Entry(second_frame,width=2,font=('Arial 24')))
     questions[i-1].place(x=100,y=20+(i-1)*50)
     second_frame.configure(height=53*i)
-
-
 
 
 second_frame.configure(height=6144.0)
