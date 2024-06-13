@@ -123,7 +123,7 @@ variables = []
 for i in range(1,order+1):
     Label(second_frame,text=i,font=("Roboto",25)).place(x=20,y=20+(i-1)*50)
     variables.append(Entry(second_frame,width=2,font=('Arial 24')))
-    variables[i-1].place(x=100,y=20+(i-1)*50)
+    variables[-1].place(x=100,y=20+(i-1)*50)
 
 second_frame.configure(height=6144.0)
 root.mainloop()""")
@@ -192,16 +192,16 @@ def myFunction(event=None):
     Bos = 0
 
     for i in range(1,order+1):
-        if questions[i-1].get() == "" or questions[i-1].get()[0] not in (cevablar) or answers[i-1][0]==" ":
-            sign[i-1]['text']=""
+        if questions[-1].get() == "" or questions[-1].get()[0] not in (cevablar) or answers[-1][0]==" ":
+            sign[-1]['text']=""
             Bos+=1
-        elif questions[i-1].get()[0] in answers[i-1]:
-                sign[i-1]['text']="✔️"
-                sign[i-1]['fg']="green"
+        elif questions[-1].get()[0] in answers[-1]:
+                sign[-1]['text']="✔️"
+                sign[-1]['fg']="green"
                 Dogru+=1
         else:
-            sign[i-1]['text']="X"
-            sign[i-1]['fg']="red"
+            sign[-1]['text']="X"
+            sign[-1]['fg']="red"
             Yanlis+=1
 
     net = (Dogru-Yanlis/4)
@@ -240,10 +240,10 @@ sign = []
 questions = []
 for i in range(1,order+1):
     sign.append(Label(second_frame,text="",fg='green',font=("Roboto",25)))
-    sign[i-1].place(x=150,y=20+(i-1)*50)
+    sign[-1].place(x=150,y=20+(i-1)*50)
     Label(second_frame,text=i,font=("Roboto",25)).place(x=20,y=20+(i-1)*50)
     questions.append(Entry(second_frame,width=2,font=('Arial 24')))
-    questions[i-1].place(x=100,y=20+(i-1)*50)
+    questions[-1].place(x=100,y=20+(i-1)*50)
     second_frame.configure(height=53*i)
 
 
